@@ -22,7 +22,7 @@ function setup(){
   ground=createSprite(450,350,10,10);
   ground.addImage(groundImg);
 
- tom=createSprite(700,500,10,10);
+ tom=createSprite(700,500,5,5);
  tom.addImage(tomImg);
  tom.addAnimation("c",tomwalking);
  tom.scale=0.2;
@@ -30,14 +30,19 @@ function setup(){
  jerry=createSprite(150,500);
  jerry.addImage(jerryImg);
  jerry.addAnimation("j2",jerryt);
- jerry.scale=0.1;
+ jerry.scale=0.13;
 
+ tom.setCollider("circle", 0, 0, 300);
+ jerry.setCollider("circle", 0, 0, 200);
 }
 
 function draw() {
     background(0);
 
     keyPressed();
+
+    tom.collide(jerry);
+
     //Write condition here to evalute if tom and jerry collide
     if(tom.x-jerry.x<90){
       tom.velocityX=0;
